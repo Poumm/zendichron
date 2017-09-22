@@ -15,7 +15,7 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 ReactDOM.render(
   <div>
     <menu>
-      <a id="home" className="menu-item" href="/" />
+      <a id="Acceuil" className="menu-item" href="/" />
       <a id="Scénario 1" className="menu-item" href="/scenario1" />
     </menu>
     <Provider store={createStoreWithMiddleware(reducers)}>
