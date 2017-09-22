@@ -1,19 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { slide as menu } from "react-burger-menu";
+import "./index.css";
+import promise from "redux-promise";
 
+import App from "./components/App";
+import reducers from "./reducers";
 
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
-<BrowserRouter>
-    <dvi>
-        <switch>
+  <div>
+    <menu>
+      <a id="home" className="menu-item" href="/" />
+      <a id="Scénario 1" className="menu-item" href="/scenario1" />
+    </menu>
+    <Provider store={createStoreWithMiddleware(reducers)}>
+      <BrowserRouter>
+        <div>
+          <Switch>
             <Route path="/" component={App} />
-        </switch>
-    </dvi>
-</BrowserRouter>
-
-, document.querySelector('.root'));
-registerServiceWorker();
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </Provider>
+  </div>,
+  document.querySelector(".root")
+);
