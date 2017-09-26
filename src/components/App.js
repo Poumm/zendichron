@@ -1,18 +1,27 @@
 import React, { Component } from "react";
-import logo from "../logo.svg";
+import { slide as Menu } from "react-burger-menu";
 import "../App.css";
 
 class App extends Component {
+  showSettings(event) {
+    event.preventDefault();
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div>
+        <Menu>
+          <a id="Acceuil" className="menu-item" href="/">
+            Acceuil
+          </a>
+          <a id="Scénario1" className="menu-item" href="/scenario1">
+            Scénario 1
+          </a>
+        </Menu>
+
+        <div className="App">
+          <p>Ci-dessous la liste des scénarios</p>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
