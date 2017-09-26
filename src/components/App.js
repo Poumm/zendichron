@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { slide as Menu } from "react-burger-menu";
 import "../App.css";
 
 class App extends Component {
@@ -9,19 +8,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Menu>
-          <a id="Acceuil" className="menu-item" href="/">
-            Acceuil
-          </a>
-          <a id="Scénario1" className="menu-item" href="/scenario1">
-            Scénario 1
-          </a>
-        </Menu>
-
-        <div className="App">
-          <p>Ci-dessous la liste des scénarios</p>
-        </div>
+      <div className="App">
+        <p>Ci-dessous la liste des scénarios</p>
       </div>
     );
   }
