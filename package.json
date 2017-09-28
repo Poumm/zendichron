@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ory-editor": "^0.2.24",
     "react": "^15.6.1",
     "react-burger-menu": "^2.1.6",
     "react-dom": "^15.6.1",

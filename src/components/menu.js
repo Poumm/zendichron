@@ -14,7 +14,6 @@ class Menu extends Component {
     };
 
     return _.map(menuEnDur, menuItem => {
-      console.log(menuItem);
       return (
         <a
           key={menuItem.id}
