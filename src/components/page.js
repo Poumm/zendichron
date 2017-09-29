@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
+// The editor core
 import Editor, { Editable, createEmptyState } from "ory-editor-core";
-import native from "ory-editor-plugins-default-native";
-import image from "ory-editor-plugins-image";
-import "ory-editor-plugins-image/lib/index.css";
+import "ory-editor-core/lib/index.css"; // we also want to load the stylesheets
 
-const editable = createEmptyState();
+// Renders json state to html, can be used on server and client side
+import { HTMLRenderer } from "ory-editor-renderer";
 
-const editor = new Editor({
-  plugins: {
-    content: [image],
-    native
-  },
-  editables: [editable]
-});
+// The content state
+import content from "./content.js";
 
 class Page extends Component {
+  buildEditables() {
+    /*<Editable
+          editor={editor}
+          id={element.dataset.id}
+          onChange={state => {
+            if (element.dataset.id === "1") {
+              // console.log(state)
+            }
+          }}
+        />*/
+  }
+
   render() {
     console.log(editable);
     return (
       <div className="App">
-        <Editable
-          id={editable.id}
-          editor={editor}
-          onChange={editable => {
-            console.log(editable);
-          }}
-        />
         <Link className="btn btn-danger" to="/">
           Retour
         </Link>
