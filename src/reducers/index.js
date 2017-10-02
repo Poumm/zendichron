@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
-import { reducer as formReducer } from "redux-form";
+
+import content from "./content";
+import editor from "./editor";
 
 const rootReducer = combineReducers({
-  form: formReducer
+  content: content,
+  editor: editor
 });
 
 export default rootReducer;

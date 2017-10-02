@@ -6,9 +6,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import promise from "redux-promise";
 
 import App from "./components/app";
-import Page from "./components/page";
+import Page from "./containers/page";
 import Menu from "./components/menu";
-import Editor from "./components/editor";
 import reducers from "./reducers";
 import "./index.css";
 import "./style.css";
@@ -18,7 +17,6 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 ReactDOM.render(
   <div>
     <Menu />
-    <Editor />
     <Provider store={createStoreWithMiddleware(reducers)}>
       <BrowserRouter>
         <div>

@@ -1,3 +1,7 @@
+// The editor core
+import Editor, { Editable, createEmptyState } from "ory-editor-core";
+import "ory-editor-core/lib/index.css"; // we also want to load the stylesheets
+
 // The rich text area plugin
 import slate from "ory-editor-plugins-slate";
 import "ory-editor-plugins-slate/lib/index.css";
@@ -44,8 +48,9 @@ const editor = new Editor({
   plugins: plugins,
   // pass the content states
   editables: [
-    ...content,
     // creates an empty state, basically like the line above
     createEmptyState()
   ]
 });
+
+export default editor;
