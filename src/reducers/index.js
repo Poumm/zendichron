@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 
-import content from "./content";
+import ReducerContent from "./reducer_content";
 import editor from "./editor";
 
 const rootReducer = combineReducers({
-  content: content,
+  content: ReducerContent,
   editor: editor
 });
 
