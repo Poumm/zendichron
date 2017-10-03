@@ -46,6 +46,7 @@ const editor = new Editor({
   plugins: plugins,
   // pass the content states
   editables: [
+    ...content,
     // creates an empty state, basically like the line above
     createEmptyState()
   ]
