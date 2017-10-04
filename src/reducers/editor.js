@@ -1,3 +1,4 @@
+import _ from "lodash";
 // The editor core
 import Editor, { createEmptyState } from "ory-editor-core";
 import "ory-editor-core/lib/index.css"; // we also want to load the stylesheets
@@ -32,6 +33,7 @@ import native from "ory-editor-plugins-default-native";
 // The divider plugin
 import divider from "ory-editor-plugins-divider";
 
+import { FETCH_CONTENT } from "../actions";
 // Define which plugins we want to use (all of the above)
 const plugins = {
   content: [slate(), spacer, image, video, divider, html5video],
@@ -42,16 +44,24 @@ const plugins = {
   native
 };
 
-const editor = new Editor({
-  plugins: plugins,
-  // pass the content states
-  editables: [
-    ...content,
-    // creates an empty state, basically like the line above
-    createEmptyState()
-  ]
-});
+export default function(state = null, action) {
+  switch (action.type) {
+    case FETCH_CONTENT:
+      //console.log("reducer");
+      //console.log(action.payload.content);
+      const editor = new Editor({
+        plugins: plugins,
+        // pass the content states
+        editables: [
+          ...action.payload.content,
+          // creates an empty state, basically like the line above
+          createEmptyState()
+        ]
+      });
 
-export default function() {
-  return editor;
+      return editor;
+
+    default:
+      return state;
+  }
 }

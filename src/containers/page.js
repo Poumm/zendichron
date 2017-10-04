@@ -38,7 +38,6 @@ class Page extends Component {
               />
             </div>
           </div>
-          <HTMLRenderer state={component} plugins={this.props.editor.plugins} />
         </div>
       );
     });
