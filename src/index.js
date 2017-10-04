@@ -8,7 +8,7 @@ import promise from "redux-promise";
 import App from "./components/app";
 import Page from "./containers/page";
 import Menu from "./components/menu";
-import reducers from "./reducers";
+import reducers from "./reducers/combine";
 import "./index.css";
 import "./style.css";
 

@@ -1,4 +1,3 @@
-import _ from "lodash";
 // The editor core
 import Editor, { createEmptyState } from "ory-editor-core";
 import "ory-editor-core/lib/index.css"; // we also want to load the stylesheets
@@ -47,8 +46,6 @@ const plugins = {
 export default function(state = null, action) {
   switch (action.type) {
     case FETCH_CONTENT:
-      //console.log("reducer");
-      //console.log(action.payload.content);
       const editor = new Editor({
         plugins: plugins,
         // pass the content states
