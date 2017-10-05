@@ -2,12 +2,18 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Editable } from "ory-editor-core";
+import { Trash, DisplayModeToggle, Toolbar } from "ory-editor-ui";
+import "ory-editor-ui/lib/index.css";
 
 // Utiliser pour afficher la page sans possibilité de modification.
 // à garder de coté pour les droits d'accès.
 //import { HTMLRenderer } from "ory-editor-renderer";
 
 import { fetchContent } from "../actions/index";
+
+// react-tap-event-plugin is required for material-ui which is used by ory-editor-ui
+var injectTapEventPlugin = require("react-tap-event-plugin");
+injectTapEventPlugin();
 
 class Page extends Component {
   componentWillMount() {
@@ -35,8 +41,26 @@ class Page extends Component {
     });
   }
 
+  buildControls() {
+    if (!this.props.content) {
+      return <div />;
+    }
+    return (
+      <div>
+        <Trash editor={this.props.editor} />
+        <DisplayModeToggle editor={this.props.editor} />
+        <Toolbar editor={this.props.editor} />
+      </div>
+    );
+  }
+
   render() {
-    return <div>{this.buildEditables()}</div>;
+    return (
+      <div>
+        {this.buildEditables()}
+        {this.buildControls()}
+      </div>
+    );
   }
 }
 
