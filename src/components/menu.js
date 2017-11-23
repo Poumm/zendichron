@@ -4,12 +4,7 @@ import { Menu, Container } from "semantic-ui-react";
 
 class MenuCompo extends Component {
   manageMenu() {
-    const menuEnDur = {
-      scenario1: { id: "scenario1", page: "index", label: "Scénario 1" },
-      scenario2: { id: "scenario2", page: "index", label: "Scénario 2" }
-    };
-
-    return _.map(menuEnDur, menuItem => {
+    return _.map(this.props.menu, menuItem => {
       return (
         <Menu.Item
           key={menuItem.id}

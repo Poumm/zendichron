@@ -17,7 +17,12 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
   <div>
-    <Menu />
+    <Menu
+      menu={{
+        scenario1: { id: "scenario1", page: "index", label: "Scénario 1" },
+        scenario2: { id: "scenario2", page: "index", label: "Scénario 2" }
+      }}
+    />
     <Provider store={createStoreWithMiddleware(reducers)}>
       <BrowserRouter>
         <div>
