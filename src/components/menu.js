@@ -1,12 +1,8 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import { slide as Slide } from "react-burger-menu";
+import { Menu, Container } from "semantic-ui-react";
 
-class Menu extends Component {
-  showSettings(event) {
-    event.preventDefault();
-  }
-
+class MenuCompo extends Component {
   manageMenu() {
     const menuEnDur = {
       scenario1: { id: "scenario1", page: "index", label: "Scénario 1" },
@@ -15,27 +11,29 @@ class Menu extends Component {
 
     return _.map(menuEnDur, menuItem => {
       return (
-        <a
+        <Menu.Item
           key={menuItem.id}
-          className="menu-item"
-          href={`/scenario/scenario1/page/${menuItem.page}`}
+          href={`/scenario/${menuItem.id}/page/${menuItem.page}`}
         >
           {menuItem.label}
-        </a>
+        </Menu.Item>
       );
     });
   }
 
   render() {
     return (
-      <Slide>
-        <a id="Acceuil" className="menu-item" href="/">
-          Acceuil
-        </a>
-        {this.manageMenu()}
-      </Slide>
+      <Menu fixed="left" vertical inverted>
+        <Container>
+          <Menu.Item as="a" header href="/">
+            Acceuil
+          </Menu.Item>
+
+          {this.manageMenu()}
+        </Container>
+      </Menu>
     );
   }
 }
 
-export default Menu;
+export default MenuCompo;

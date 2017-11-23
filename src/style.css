@@ -2,8 +2,6 @@
 @import "./elements.css";
 
 body {
-  background: #eee;
-
   color: #333333;
   font-size: 18px;
   line-height: 28px;
@@ -11,42 +9,35 @@ body {
   font-family: "Open Sans", serif;
 }
 
-p {
+.editable p {
   margin: 0 0 28px;
 }
 
-pre {
+.editable pre {
   overflow-x: auto;
 }
 
-a {
+.editable a {
   color: #c73036;
   font-family: Georgia, serif;
   text-decoration: underline;
 }
 
-a:hover {
+.editable a:hover {
   color: #333333;
   text-decoration: underline;
 }
 
-.container {
-  background-color: white;
+.editable .container {
+  background: white;
+  padding: 0 24px;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: stretch;
 }
 
 .ory-cell-leaf {
   padding: 8px;
-}
-
-.container {
-  background: white;
-  padding: 0 24px;
-}
-
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  align-items: stretch;
 }
 
 @media (min-width: 768px) {
@@ -72,34 +63,34 @@ a:hover {
   padding: 5px;
 }
 
-nav {
+.editable nav {
   color: #eee;
   background: #111;
   font-family: "Open Sans", serif;
 }
 
-nav ul {
+.editable nav ul {
   list-style-type: none;
   margin: 0 0 20px 0;
   padding: 10px 20px;
   text-align: right;
 }
 
-nav ul li {
+.editable nav ul li {
   display: inline-block;
   padding: 0 10px;
 }
 
-nav ul li a,
-nav ul li a:visited {
+.editable nav ul li a,
+.editable nav ul li a:visited {
   color: #eee;
   transition: all 200ms ease;
   text-decoration: none;
   font-family: "Open Sans", serif;
 }
 
-nav ul li a:hover,
-nav ul li a:active {
+.editable nav ul li a:hover,
+.editable nav ul li a:active {
   color: #aaa;
   text-decoration: none;
 }
