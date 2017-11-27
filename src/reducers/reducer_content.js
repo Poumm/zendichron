@@ -1,9 +1,12 @@
-import { FETCH_CONTENT } from "../actions";
+import { FETCH_CONTENT, FETCH_MENU } from "../actions";
 
 export default function(state = null, action) {
   switch (action.type) {
     case FETCH_CONTENT:
-      return action.payload.content;
+      return { ...this.state, content: action.payload.content };
+
+    case FETCH_MENU:
+      return { ...this.state, menu: action.payload };
 
     default:
       return state;
