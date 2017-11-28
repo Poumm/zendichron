@@ -9,7 +9,7 @@ import { fetchMenu } from "../actions/index";
 
 class Main extends Component {
   componentWillMount() {
-    fetchMenu();
+    this.props.fetchMenu();
   }
 
   render() {
@@ -36,4 +36,4 @@ function mapStateToProps(state) {
   return { menu: state.data.menu };
 }
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, { fetchMenu })(Main);

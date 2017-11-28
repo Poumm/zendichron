@@ -5,7 +5,10 @@ function manageMenu(props) {
   if (props.menu)
     return props.menu.map(menuItem => {
       return (
-        <Menu.Item key={menuItem._id} href={`/scenario/${menuItem.code}/index`}>
+        <Menu.Item
+          key={menuItem._id}
+          href={`/scenario/${menuItem.code}/page/index`}
+        >
           {menuItem.title}
         </Menu.Item>
       );

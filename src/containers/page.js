@@ -65,7 +65,7 @@ class Page extends Component {
 }
 
 function mapStateToProps(state) {
-  return { content: state.content, editor: state.editor };
+  return { content: state.data.content, editor: state.editor };
 }
 
 export default connect(mapStateToProps, { fetchContent })(Page);

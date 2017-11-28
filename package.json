@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.17.1",
     "ory-editor": "^0.2.24",
     "ory-editor-plugins-html5-video": "^0.2.24",
     "ory-editor-plugins-video": "^0.2.24",
@@ -15,6 +16,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
     "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.76.0"
   },
