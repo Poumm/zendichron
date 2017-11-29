@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Container, Grid } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 import Home from "../components/home";
 import Page from "./page";
 import Menu from "../components/menu";
 import { fetchMenu } from "../actions/index";
+
+const renderMergedProps = (component, ...props) => {
+  const finalProps = Object.assign({}, ...props);
+  return React.createElement(component, finalProps);
+};
 
 class Main extends Component {
   componentWillMount() {
@@ -26,7 +31,13 @@ class Main extends Component {
                 path="/scenario/:idSenario/page/:idPage"
                 component={Page}
               />
-              <Route path="/" component={Home} />
+              <Route
+                path="/"
+                render={routeProps => {
+                  //TODO géré stories et menu via un seul appel qui renvois les stories sans les pages et enregistre le tout dans le reduxstate
+                  return renderMergedProps(Home, this.props.stories);
+                }}
+              />
             </Switch>
           </BrowserRouter>
         </Grid.Column>
