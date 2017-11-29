@@ -9,7 +9,8 @@
   border: none;
 }
 
-.editable-area code, .editable-area pre {
+.editable-area code,
+.editable-area pre {
   font-family: monospace;
   border-radius: 0.3em;
   padding: 0.4em;
@@ -26,13 +27,14 @@
   margin: 1em;
 }
 
-.editable-area ul, .editable-area ol {
+.editable-area ul,
+.editable-area ol {
   margin: 1em 0;
   list-style-type: inside;
 }
 
 .editable-area li {
-  margin: .2em 0 .2em 1em;
+  margin: 0.2em 0 0.2em 1em;
 }
 
 .editable-area li p {

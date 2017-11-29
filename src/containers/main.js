@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Container, Grid } from "semantic-ui-react";
 
 import Home from "../components/home";
 import Page from "./page";
@@ -14,10 +15,12 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
-        <Menu menu={this.props.menu} />
-        <BrowserRouter>
-          <div>
+      <Grid>
+        <Grid.Column width={3}>
+          <Menu menu={this.props.menu} />
+        </Grid.Column>
+        <Grid.Column width={13}>
+          <BrowserRouter>
             <Switch>
               <Route
                 path="/scenario/:idSenario/page/:idPage"
@@ -25,9 +28,9 @@ class Main extends Component {
               />
               <Route path="/" component={Home} />
             </Switch>
-          </div>
-        </BrowserRouter>
-      </div>
+          </BrowserRouter>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

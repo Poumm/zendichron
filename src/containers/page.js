@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Editable } from "ory-editor-core";
 import { Trash, DisplayModeToggle, Toolbar } from "ory-editor-ui";
+
 import "ory-editor-ui/lib/index.css";
 
 // Utiliser pour afficher la page sans possibilité de modification.
@@ -26,16 +27,14 @@ class Page extends Component {
     }
     return _.map(this.props.content, component => {
       return (
-        <div className="container" key={component.id}>
-          <div className="editable editable-area" data-id="10">
-            <Editable
-              editor={this.props.editor}
-              id={component.id}
-              onChange={state => {
-                console.log(state);
-              }}
-            />
-          </div>
+        <div className="editable editable-area" data-id="10" key={component.id}>
+          <Editable
+            editor={this.props.editor}
+            id={component.id}
+            onChange={state => {
+              console.log(state);
+            }}
+          />
         </div>
       );
     });
