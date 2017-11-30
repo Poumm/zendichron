@@ -6,7 +6,6 @@ class Home extends Component {
     if (!this.props || !this.props.stories || this.props.stories === null)
       return <div />;
 
-    console.log("buildStoryList", this.props.stories);
     return this.props.stories.map(story => {
       return (
         <Segment key={story._id} raised color="red">
@@ -19,7 +18,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Container className="page_container">
+      <Container>
         <h1>Bienvenu sur Zendichron</h1>
         <p>
           Zendichron est votre application de gestion de scénarios pour maitre

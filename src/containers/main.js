@@ -8,8 +8,6 @@ import Page from "./page";
 import Menu from "../components/menu";
 import { fetchStories } from "../actions/index";
 
-import "../home.css";
-
 const renderMergedProps = (component, ...props) => {
   const finalProps = Object.assign({}, ...props);
   return React.createElement(component, finalProps);
@@ -23,10 +21,10 @@ class Main extends Component {
   render() {
     return (
       <Grid>
-        <Grid.Column width={3}>
+        <Grid.Column width={2}>
           <Menu stories={this.props.stories} />
         </Grid.Column>
-        <Grid.Column width={13}>
+        <Grid.Column width={14}>
           <BrowserRouter>
             <Switch>
               <Route path="/story/:idStory/page/:idPage" component={Page} />
@@ -34,7 +32,6 @@ class Main extends Component {
               <Route
                 path="/"
                 render={routeProps => {
-                  //TODO géré stories et menu via un seul appel qui renvois les stories sans les pages et enregistre le tout dans le reduxstate
                   return renderMergedProps(Home, {
                     stories: this.props.stories
                   });

@@ -9,7 +9,7 @@ import "semantic-ui-css/semantic.min.css";
 import Main from "./containers/main";
 import reducers from "./reducers/combine";
 
-import "./style.css";
+import "./css/style.css";
 
 const compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || reduxCompose;
 const store = createStore(reducers, compose(applyMiddleware(ReduxThunk)));
