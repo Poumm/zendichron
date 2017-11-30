@@ -26,3 +26,10 @@ export function fetchStories() {
       });
   };
 }
+
+export function addStory(formValue) {
+  console.log(formValue);
+  return dispatch => {
+    //axios.put(`${webserviceURL}/story`, formValue);
+  };
+}
