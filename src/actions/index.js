@@ -28,8 +28,12 @@ export function fetchStories() {
 }
 
 export function addStory(formValue) {
-  console.log(formValue);
   return dispatch => {
-    //axios.put(`${webserviceURL}/story`, formValue);
+    axios
+      .post(`${webserviceURL}/story`, formValue)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(res => console.log(res.body));
   };
 }

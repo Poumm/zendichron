@@ -8,6 +8,10 @@ body {
   font-family: "Open Sans", serif;
 }
 
+.ui.vertical.menu {
+  width: 12.5%;
+}
+
 .editable p {
   margin: 0 0 28px;
 }
