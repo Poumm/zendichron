@@ -27,13 +27,13 @@ export function fetchStories() {
   };
 }
 
-export function addStory(formValue) {
+export function addStory(formValue, fromComponent) {
   return dispatch => {
     axios
       .post(`${webserviceURL}/story`, formValue)
       .then(res => {
-        console.log(res);
+        fromComponent.props.history.push(`/story/${res.code}/index`);
       })
-      .catch(res => console.log(res.body));
+      .catch(res => console.log(res.body, res));
   };
 }

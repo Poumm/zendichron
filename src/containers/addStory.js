@@ -32,7 +32,7 @@ class AddStory extends Component {
       alert("Le résumer ne doit pas faire être vide");
       return;
     }
-    this.props.addStory(this.state);
+    this.props.addStory(this.state, this);
     this.setState({
       title: "",
       isOfficial: false,
