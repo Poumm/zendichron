@@ -6,6 +6,7 @@ import { Grid } from "semantic-ui-react";
 import Home from "../components/home";
 import Page from "./page";
 import AddStory from "./addStory";
+import IndexPage from "./index";
 import Menu from "../components/menu";
 import { fetchStories } from "../actions/stories";
 
@@ -28,7 +29,8 @@ class Main extends Component {
         <Grid.Column width={14}>
           <BrowserRouter>
             <Switch>
-              <Route path="/story/:idStory/page/:idPage" component={Page} />
+              <Route path="/story/:storyCode/page/:pageCode" component={Page} />
+              <Route path="/story/:storyCode/index" component={IndexPage} />
               <Route path="/addstory" component={AddStory} />
               <Route
                 path="/"
