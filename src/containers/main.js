@@ -7,7 +7,7 @@ import Home from "../components/home";
 import Page from "./page";
 import AddStory from "./addStory";
 import Menu from "../components/menu";
-import { fetchStories } from "../actions/index";
+import { fetchStories } from "../actions/stories";
 
 const renderMergedProps = (component, ...props) => {
   const finalProps = Object.assign({}, ...props);

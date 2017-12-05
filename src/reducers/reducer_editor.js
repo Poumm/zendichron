@@ -32,7 +32,8 @@ import native from "ory-editor-plugins-default-native";
 // The divider plugin
 import divider from "ory-editor-plugins-divider";
 
-import { FETCH_CONTENT } from "../actions";
+import { FETCH_CONTENT } from "../actions/pages";
+
 // Define which plugins we want to use (all of the above)
 const plugins = {
   content: [slate(), spacer, image, video, divider, html5video],

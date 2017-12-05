@@ -1,4 +1,5 @@
-import { FETCH_CONTENT, FETCH_STORIES } from "../actions";
+import { FETCH_STORIES } from "../actions/stories";
+import { FETCH_CONTENT } from "../actions/pages";
 
 export default function(state = { content: null, stories: null }, action) {
   switch (action.type) {

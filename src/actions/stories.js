@@ -1,17 +1,9 @@
 import axios from "axios";
-import content from "../content.js";
 
-export const FETCH_CONTENT = "@@ZENDICHRON/fetch_content";
 export const FETCH_STORIES = "@@ZENDICHRON/fetch_stories";
+export const ADD_STORY = "@@ZENDICHRON/add_story";
 
 const webserviceURL = "http://localhost:3050";
-
-export function fetchContent() {
-  return {
-    type: FETCH_CONTENT,
-    payload: { content: content }
-  };
-}
 
 export function fetchStories() {
   return (dispatch, getState) => {
@@ -32,7 +24,12 @@ export function addStory(formValue, fromComponent) {
     axios
       .post(`${webserviceURL}/story`, formValue)
       .then(res => {
-        fromComponent.props.history.push(`/story/${res.code}/index`);
+        dispatch(dispatch => {
+          dispatch(fetchStories());
+          return Promise.resolve();
+        }).then(
+          fromComponent.props.history.push(`/story/${res.data.code}/index`)
+        );
       })
       .catch(res => console.log(res.body, res));
   };

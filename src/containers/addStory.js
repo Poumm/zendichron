@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Container, Form } from "semantic-ui-react";
 
-import { addStory } from "../actions/index";
+import { addStory } from "../actions/stories";
 
 class AddStory extends Component {
   constructor(props) {

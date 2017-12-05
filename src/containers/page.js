@@ -10,7 +10,7 @@ import "ory-editor-ui/lib/index.css";
 // à garder de coté pour les droits d'accès.
 //import { HTMLRenderer } from "ory-editor-renderer";
 
-import { fetchContent } from "../actions/index";
+import { fetchContent } from "../actions/pages";
 
 // react-tap-event-plugin is required for material-ui which is used by ory-editor-ui
 var injectTapEventPlugin = require("react-tap-event-plugin");
