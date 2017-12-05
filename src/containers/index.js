@@ -7,18 +7,20 @@ class IndexPage extends Component {
   componentWillMount() {
     console.log(this.props);
     if (!this.props.currentStory) {
-      this.props.fetchStory(this.props.match.params.idStory);
+      this.props.fetchStory(this.props.match.params.storyCode);
     }
   }
 
   render() {
     const currentStory = this.props.currentStory;
-    return (
-      <div>
-        <h1>{currentStory.title}</h1>
-        <p>{currentStory.summary}</p>
-      </div>
-    );
+    if (currentStory) {
+      return (
+        <div>
+          <h1>{currentStory.title}</h1>
+          <p>{currentStory.summary}</p>
+        </div>
+      );
+    } else return <div>Chargement...</div>;
   }
 }
 
