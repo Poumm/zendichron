@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container, Segment, Grid, Button } from "semantic-ui-react";
+import { Container, Segment, Grid, Form } from "semantic-ui-react";
 
 import { fetchStory } from "../actions/stories";
+import { addPage } from "../actions/pages";
 
 class IndexPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { title: "" };
+  }
+
+  componentWillMount() {
+    if (!this.props.currentStory) {
+      this.props.fetchStory(this.props.match.params.storyCode);
+    }
+  }
+
   buildPageList() {
     if (!this.props.currentStory) return <div />;
 
@@ -17,15 +29,26 @@ class IndexPage extends Component {
     });
   }
 
-  componentWillMount() {
-    console.log(this.props);
-    if (!this.props.currentStory) {
-      this.props.fetchStory(this.props.match.params.storyCode);
+  onChange(e, { name, value, checked }) {
+    this.setState({ [name]: value });
+  }
+
+  onSubmit() {
+    console.log(this.state);
+    if (!this.state || this.state.length < 4) {
+      alert("Le titre doit faire plus de 3 charactères");
+      return;
     }
+
+    this.props.addPage(this.props.currentStory, this.state.title, this);
+    this.setState({
+      title: ""
+    });
   }
 
   render() {
     const currentStory = this.props.currentStory;
+
     if (currentStory) {
       return (
         <Container>
@@ -40,15 +63,26 @@ class IndexPage extends Component {
                 <p>{currentStory.summary}</p>
               </Grid.Column>
               <Grid.Column width={4}>
-                <p>
-                  Cette page répertorie toutes les pages du scénario. Vous
-                  pouvez ajouter une nouvelle page ici.
-                </p>
-                <Button primary>Ajouter</Button>
+                <Form onSubmit={this.onSubmit.bind(this)}>
+                  <p>
+                    Cette page répertorie toutes les pages du scénario. Vous
+                    pouvez ajouter une nouvelle page ici.
+                  </p>
+                  <Form.Input
+                    label="Titre"
+                    placeholder="Titre"
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.onChange.bind(this)}
+                  />
+                  <Form.Button>Ajouter</Form.Button>
+                </Form>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-              <Grid.Column>{this.buildPageList}</Grid.Column>
+              <Grid.Column>
+                <div>{this.buildPageList}</div>
+              </Grid.Column>
             </Grid.Row>
           </Grid>
         </Container>
@@ -61,4 +95,4 @@ function mapStateToProps(state) {
   return { currentStory: state.data.currentStory };
 }
 
-export default connect(mapStateToProps, { fetchStory })(IndexPage);
+export default connect(mapStateToProps, { fetchStory, addPage })(IndexPage);

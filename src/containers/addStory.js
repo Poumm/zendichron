@@ -67,7 +67,7 @@ class AddStory extends Component {
             value={summary}
             onChange={this.onChange.bind(this)}
           />
-          <Form.Button>Submit</Form.Button>
+          <Form.Button>Valider</Form.Button>
         </Form>
       </Container>
     );

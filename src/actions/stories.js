@@ -4,12 +4,10 @@ export const FETCH_STORIES = "@@ZENDICHRON/fetch_stories";
 export const FETCH_STORY = "@@ZENDICHRON/fetch_story";
 export const ADD_STORY = "@@ZENDICHRON/add_story";
 
-const webserviceURL = "http://localhost:3050";
-
 export function fetchStories() {
   return (dispatch, getState) => {
     axios
-      .get(`${webserviceURL}/stories`)
+      .get(`${getState().data.webserviceURL}/stories`)
       .then(res => {
         dispatch({ type: FETCH_STORIES, payload: res.data });
       })
@@ -23,7 +21,7 @@ export function fetchStories() {
 export function fetchStory(code) {
   return (dispatch, getState) => {
     axios
-      .get(`${webserviceURL}/story?code=${code}`)
+      .get(`${getState().data.webserviceURL}/story?code=${code}`)
       .then(res => {
         dispatch({ type: FETCH_STORY, payload: res.data });
       })
@@ -35,9 +33,9 @@ export function fetchStory(code) {
 }
 
 export function addStory(formValue, fromComponent) {
-  return dispatch => {
+  return (dispatch, getState) => {
     axios
-      .post(`${webserviceURL}/story`, formValue)
+      .post(`${getState().data.webserviceURL}/story`, formValue)
       .then(res => {
         dispatch(dispatch => {
           dispatch(fetchStories());
