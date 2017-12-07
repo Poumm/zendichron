@@ -34,13 +34,12 @@ class IndexPage extends Component {
   }
 
   onSubmit() {
-    console.log(this.state);
     if (!this.state || this.state.length < 4) {
       alert("Le titre doit faire plus de 3 charactères");
       return;
     }
 
-    this.props.addPage(this.props.currentStory, this.state.title, this);
+    this.props.addPage(this.props.currentStory, this.state, this);
     this.setState({
       title: ""
     });

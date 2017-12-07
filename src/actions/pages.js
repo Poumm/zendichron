@@ -11,13 +11,10 @@ export function fetchContent() {
   };
 }
 
-export function addPage(story, pageTitle, fromComponent) {
+export function addPage(story, title, fromComponent) {
   return (dispatch, getState) => {
     axios
-      .post(
-        `${getState().data.webserviceURL}/story/${story._id}/page`,
-        pageTitle
-      )
+      .post(`${getState().data.webserviceURL}/story/${story._id}/page`, title)
       .then(res => {
         dispatch(dispatch => {
           dispatch({ type: ADD_PAGE, payload: res.data });
