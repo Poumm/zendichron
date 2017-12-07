@@ -4,10 +4,20 @@ import axios from "axios";
 export const FETCH_CONTENT = "@@ZENDICHRON/fetch_content";
 export const ADD_PAGE = "@@ZENDICHRON/add_page";
 
-export function fetchContent() {
-  return {
-    type: FETCH_CONTENT,
-    payload: { content: content }
+export function fetchContent(storyCode, pageCode) {
+  return (dispatch, getState) => {
+    axios
+      .get(
+        `${getState().data.webserviceURL}/pageContent?storyCode=${
+          storyCode
+        }&pageCode=${pageCode}`
+      )
+      .then(res => {
+        if (!res.data.content) {
+          res.data.content = content;
+        }
+        dispatch({ type: FETCH_CONTENT, payload: res.data });
+      });
   };
 }
 

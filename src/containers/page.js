@@ -18,7 +18,10 @@ injectTapEventPlugin();
 
 class Page extends Component {
   componentWillMount() {
-    this.props.fetchContent();
+    this.props.fetchContent(
+      this.props.match.params.storyCode,
+      this.props.match.params.pageCode
+    );
   }
 
   buildEditables() {
@@ -31,9 +34,7 @@ class Page extends Component {
           <Editable
             editor={this.props.editor}
             id={component.id}
-            onChange={state => {
-              console.log(state);
-            }}
+            onChange={state => {}}
           />
         </div>
       );
