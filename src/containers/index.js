@@ -20,9 +20,21 @@ class IndexPage extends Component {
   buildPageList() {
     if (!this.props.currentStory) return <div />;
 
-    return this.props.currentStory.map(page => {
+    return this.props.currentStory.pages.map(page => {
       return (
-        <Segment key={page._id} raised color="blue">
+        <Segment
+          key={page._id}
+          raised
+          color="blue"
+          onClick={() => {
+            console.log("this", this);
+            console.log("currentstory", this.props.currentStory);
+            console.log("page", page);
+            this.props.history.push(
+              `/story/${this.props.currentStory.code}/page/${page.code}`
+            );
+          }}
+        >
           <h3>{page.title}</h3>
         </Segment>
       );
@@ -60,6 +72,7 @@ class IndexPage extends Component {
             <Grid.Row>
               <Grid.Column width={12}>
                 <p>{currentStory.summary}</p>
+                {this.buildPageList()}
               </Grid.Column>
               <Grid.Column width={4}>
                 <Form onSubmit={this.onSubmit.bind(this)}>

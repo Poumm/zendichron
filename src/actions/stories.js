@@ -12,7 +12,7 @@ export function fetchStories() {
         dispatch({ type: FETCH_STORIES, payload: res.data });
       })
       .catch(res => {
-        console.log("ws ko", res);
+        console.log("Can't fetch list of stories : ", res);
         dispatch({ type: FETCH_STORIES, payload: [] });
       });
   };
@@ -26,7 +26,7 @@ export function fetchStory(code) {
         dispatch({ type: FETCH_STORY, payload: res.data });
       })
       .catch(res => {
-        console.log("ws ko", res);
+        console.log("can't fetch story : ", res);
         dispatch({ type: FETCH_STORY, payload: [] });
       });
   };
