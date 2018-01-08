@@ -34,7 +34,13 @@ class Page extends Component {
           <Editable
             editor={this.props.editor}
             id={component.id}
-            onChange={state => {}}
+            onChange={content =>
+              this.props.saveContent(
+                this.props.currentStory,
+                // récupération de page._id depuis current story par code : this.props.match.params.pageCode,
+                content
+              )
+            }
           />
         </div>
       );
@@ -65,7 +71,11 @@ class Page extends Component {
 }
 
 function mapStateToProps(state) {
-  return { content: state.data.content, editor: state.editor };
+  return {
+    content: state.data.content,
+    currentStory: state.data.currentStory,
+    editor: state.editor
+  };
 }
 
 export default connect(mapStateToProps, { fetchContent })(Page);
