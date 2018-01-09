@@ -24,6 +24,13 @@ class Page extends Component {
     );
   }
 
+  getCurrentPage() {
+    const pages = this.props.currentStory.pages.map(page => {
+      if (page.code === this.props.match.params.pageCode) return page;
+    });
+    if ((pages.lenght = 1)) return pages[0];
+  }
+
   buildEditables() {
     if (!this.props.content) {
       return <div>Loading</div>;
@@ -37,7 +44,7 @@ class Page extends Component {
             onChange={content =>
               this.props.saveContent(
                 this.props.currentStory,
-                // récupération de page._id depuis current story par code : this.props.match.params.pageCode,
+                getCurrentPage(),
                 content
               )
             }
