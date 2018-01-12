@@ -1,4 +1,5 @@
-import _ from "lodash";
+import map from "lodash/map";
+import debounce from "lodash/debounce";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Editable } from "ory-editor-core";
@@ -10,7 +11,7 @@ import "ory-editor-ui/lib/index.css";
 // à garder de coté pour les droits d'accès.
 //import { HTMLRenderer } from "ory-editor-renderer";
 
-import { fetchContent } from "../actions/pages";
+import { fetchContent, saveContent } from "../actions/pages";
 
 // react-tap-event-plugin is required for material-ui which is used by ory-editor-ui
 var injectTapEventPlugin = require("react-tap-event-plugin");
@@ -25,29 +26,32 @@ class Page extends Component {
   }
 
   getCurrentPage() {
-    const pages = this.props.currentStory.pages.map(page => {
-      if (page.code === this.props.match.params.pageCode) return page;
+    return this.props.currentStory.pages.find(page => {
+      return page.code === this.props.match.params.pageCode;
     });
-    if ((pages.lenght = 1)) return pages[0];
   }
+
+  saveContent = debounce(
+    content =>
+      this.props.saveContent(
+        this.props.currentStory,
+        this.getCurrentPage(),
+        content
+      ),
+    300
+  );
 
   buildEditables() {
     if (!this.props.content) {
       return <div>Loading</div>;
     }
-    return _.map(this.props.content, component => {
+    return map(this.props.content, component => {
       return (
         <div className="editable editable-area" data-id="10" key={component.id}>
           <Editable
             editor={this.props.editor}
             id={component.id}
-            onChange={content =>
-              this.props.saveContent(
-                this.props.currentStory,
-                getCurrentPage(),
-                content
-              )
-            }
+            onChange={this.saveContent}
           />
         </div>
       );
@@ -85,4 +89,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchContent })(Page);
+export default connect(mapStateToProps, { fetchContent, saveContent })(Page);

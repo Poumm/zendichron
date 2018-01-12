@@ -27,9 +27,6 @@ class IndexPage extends Component {
           raised
           color="blue"
           onClick={() => {
-            console.log("this", this);
-            console.log("currentstory", this.props.currentStory);
-            console.log("page", page);
             this.props.history.push(
               `/story/${this.props.currentStory.code}/page/${page.code}`
             );

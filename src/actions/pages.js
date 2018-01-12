@@ -40,11 +40,13 @@ export function addPage(story, title, fromComponent) {
   };
 }
 
-export function saveContent(storyCode, page, content) {
+export function saveContent(story, page, content) {
   return (dispatch, getState) => {
     axios
       .put(
-        `${getState().data.webserviceURL}/story/${story._id}/page/${page._id}`,
+        `${getState().data.webserviceURL}/story/${story._id}/page/${
+          page._id
+        }/content`,
         content
       )
       .then(res => {
