@@ -14,7 +14,6 @@ export function fetchContent(storyCode, pageCode) {
         }/pageContent?storyCode=${storyCode}&pageCode=${pageCode}`
       )
       .then(res => {
-        console.log(res);
         if (!res.data.content) {
           res.data.content = content;
         }
@@ -29,7 +28,9 @@ export function addPage(story, title, fromComponent) {
       .put(`${getState().data.webserviceURL}/story/${story._id}/page`, title)
       .then(res => {
         dispatch(dispatch => {
-          dispatch({ type: ADD_PAGE, payload: res.data });
+          let currentStory = getState().data.currentStory;
+          currentStory.pages.push(res.data);
+          dispatch({ type: ADD_PAGE, payload: currentStory });
           return Promise.resolve();
         }).then(
           fromComponent.props.history.push(
