@@ -14,6 +14,7 @@ export function fetchContent(storyCode, pageCode) {
         }/pageContent?storyCode=${storyCode}&pageCode=${pageCode}`
       )
       .then(res => {
+        console.log(res);
         if (!res.data.content) {
           res.data.content = content;
         }
@@ -25,7 +26,7 @@ export function fetchContent(storyCode, pageCode) {
 export function addPage(story, title, fromComponent) {
   return (dispatch, getState) => {
     axios
-      .post(`${getState().data.webserviceURL}/story/${story._id}/page`, title)
+      .put(`${getState().data.webserviceURL}/story/${story._id}/page`, title)
       .then(res => {
         dispatch(dispatch => {
           dispatch({ type: ADD_PAGE, payload: res.data });
@@ -41,13 +42,14 @@ export function addPage(story, title, fromComponent) {
 }
 
 export function saveContent(story, page, content) {
+  console.log(content);
   return (dispatch, getState) => {
     axios
       .put(
         `${getState().data.webserviceURL}/story/${story._id}/page/${
           page._id
         }/content`,
-        content
+        { content: content }
       )
       .then(res => {
         dispatch(dispatch => {

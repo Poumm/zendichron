@@ -1,5 +1,5 @@
 import { FETCH_STORIES, FETCH_STORY, ADD_STORY } from "../actions/stories";
-import { FETCH_CONTENT } from "../actions/pages";
+import { FETCH_CONTENT, ADD_PAGE } from "../actions/pages";
 
 export default function(
   state = {
@@ -20,6 +20,9 @@ export default function(
       return { ...state, currentStory: action.payload };
 
     case ADD_STORY:
+      return { ...state, currentStory: action.payload };
+
+    case ADD_PAGE:
       return { ...state, currentStory: action.payload };
 
     default:
