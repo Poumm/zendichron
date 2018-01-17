@@ -11,7 +11,7 @@ export default function(
 ) {
   switch (action.type) {
     case FETCH_CONTENT:
-      return { ...state, content: action.payload.content };
+      return { ...state, content: action.payload };
 
     case FETCH_STORIES:
       return { ...state, stories: action.payload };

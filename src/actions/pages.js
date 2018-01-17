@@ -17,7 +17,8 @@ export function fetchContent(storyCode, pageCode) {
         if (!res.data.content) {
           res.data.content = content;
         }
-        dispatch({ type: FETCH_CONTENT, payload: res.data });
+        console.log(res.data.content);
+        dispatch({ type: FETCH_CONTENT, payload: res.data.content });
       });
   };
 }

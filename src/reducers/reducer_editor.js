@@ -51,7 +51,7 @@ export default function(state = null, action) {
         plugins: plugins,
         // pass the content states
         editables: [
-          ...action.payload.content,
+          ...action.payload,
           // creates an empty state, basically like the line above
           createEmptyState()
         ]
