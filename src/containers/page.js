@@ -31,20 +31,6 @@ class Page extends Component {
     });
   }
 
-  addKeyToContent(content) {
-    if (content.rows) {
-      content.rows = content.rows.map(cell => {
-        return this.addKeyToContent(cell);
-      });
-    }
-    if (content.cells) {
-      content.cells = content.cells.map(cell => {
-        return this.addKeyToContent(cell);
-      });
-    }
-    return { ...content, key: content.id };
-  }
-
   saveContent = debounce(
     content =>
       this.props.saveContent(
@@ -52,7 +38,7 @@ class Page extends Component {
         this.getCurrentPage(),
         content
       ),
-    300
+    500
   );
 
   buildEditables() {
