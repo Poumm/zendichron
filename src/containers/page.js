@@ -11,6 +11,7 @@ import "ory-editor-ui/lib/index.css";
 // à garder de coté pour les droits d'accès.
 //import { HTMLRenderer } from "ory-editor-renderer";
 
+import { fetchStory } from "../actions/stories";
 import { fetchContent, saveContent } from "../actions/pages";
 
 // react-tap-event-plugin is required for material-ui which is used by ory-editor-ui
@@ -19,6 +20,9 @@ injectTapEventPlugin();
 
 class Page extends Component {
   componentWillMount() {
+    if (!this.props.currentStory) {
+      this.props.fetchStory(this.props.match.params.storyCode);
+    }
     this.props.fetchContent(
       this.props.match.params.storyCode,
       this.props.match.params.pageCode
@@ -89,4 +93,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchContent, saveContent })(Page);
+export default connect(mapStateToProps, {
+  fetchStory,
+  fetchContent,
+  saveContent
+})(Page);
